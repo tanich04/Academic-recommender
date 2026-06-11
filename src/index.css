@@ -1,0 +1,510 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+:root {
+  --bg-primary: #F9F9FB;
+  --text-primary: #1A1A24;
+  --text-secondary: #6E6E78;
+  --accent: #3A60E0;
+  --accent-hover: #2E4FB0;
+  --card-bg: #FFFFFF;
+  --border: #E2E2EA;
+  --error: #E53E3E;
+  --error-bg: #FEE2E2;
+  --success: #2F855A;
+  --success-bg: #E6F4EA;
+  --input-bg: #FFFFFF;
+  --recommendation-bg: linear-gradient(135deg, #3A60E0 0%, #5C7CFA 100%);
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+}
+
+[data-theme="dark"] {
+  --bg-primary: #121216;
+  --text-primary: #FFFFFF;
+  --text-secondary: #A0A0AA;
+  --accent: #5C7CFA;
+  --accent-hover: #4A6AE0;
+  --card-bg: #1A1A20;
+  --border: #2A2A32;
+  --error: #FC8181;
+  --error-bg: #3B2323;
+  --success: #68D391;
+  --success-bg: #1E3A2A;
+  --input-bg: #25252D;
+  --recommendation-bg: linear-gradient(135deg, #5C7CFA 0%, #8CA3FF 100%);
+}
+
+* {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+.asterisk {
+  color: #e53e3e;
+  margin-left: 0.2rem;
+}
+
+[data-theme="dark"] .asterisk {
+  color: #fc8181;
+}
+.page-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+  animation: fadeInUp 0.4s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.header {
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+  background-color: rgba(var(--card-bg-rgb, 255,255,255), 0.8);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 0;
+  transition: color 0.2s;
+  position: relative;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+.nav-links a.active {
+  color: var(--accent);
+  border-bottom: 2px solid var(--accent);
+}
+
+.theme-toggle {
+  background: var(--input-bg);
+  border: 1px solid var(--border);
+  border-radius: 2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s;
+}
+
+.theme-toggle:hover {
+  background: var(--border);
+}
+
+/* Form card */
+/* New Form Page Layout – Login‑style Card */
+.form-page-wrapper {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: linear-gradient(145deg, #e0e7ff 0%, #c7d2fe 100%);
+}
+
+[data-theme="dark"] .form-page-wrapper {
+  background: linear-gradient(145deg, #1e1a3a 0%, #2d2a4a 100%);
+}
+
+.form-card {
+  max-width: 550px;
+  width: 100%;
+  background: var(--card-bg);
+  border-radius: 2rem;
+  padding: 2.5rem;
+  box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(2px);
+  transition: all 0.3s ease;
+  border: 1px solid var(--border);
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.form-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 0.25rem;
+}
+
+.form-header p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+/* Modern input groups */
+.input-group {
+  margin-bottom: 1.25rem;
+}
+.input-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  background: var(--input-bg);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  font-size: 0.95rem;
+  transition: 0.2s;
+}
+
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+  border-color: #8b5cf6;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+}
+
+/* Recommendation badge inside card */
+.recommendation-badge {
+  margin-top: 1.5rem;
+  background: linear-gradient(105deg, #4f46e5 0%, #8b5cf6 100%);
+  border-radius: 1rem;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: white;
+}
+
+.reco-emoji {
+  font-size: 2rem;
+}
+
+.reco-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.reco-text small {
+  font-size: 0.7rem;
+  opacity: 0.9;
+}
+
+.reco-text strong {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .form-card {
+    padding: 1.5rem;
+  }
+  .form-header h1 {
+    font-size: 1.5rem;
+  }
+}
+.form-container {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 1.5rem;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border);
+}
+
+.form-container h2 {
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.75rem;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: var(--input-bg);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  color: var(--text-primary);
+  transition: all 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(58, 96, 224, 0.2);
+}
+
+[data-theme="dark"] .form-group input:focus,
+[data-theme="dark"] .form-group select:focus,
+[data-theme="dark"] .form-group textarea:focus {
+  box-shadow: 0 0 0 3px rgba(92, 124, 250, 0.3);
+}
+
+.error {
+  color: var(--error);
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 0.85rem;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 0.5rem;
+}
+
+button[type="submit"]:hover:not(:disabled) {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+button[type="submit"]:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.recommendation-card {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: var(--recommendation-bg);
+  border-radius: 1rem;
+  text-align: center;
+  color: white;
+  box-shadow: var(--shadow-lg);
+  animation: slideUp 0.5s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.recommendation-card h3 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  opacity: 0.9;
+}
+
+.recommendation-card .recommendation-value {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  word-break: break-word;
+}
+
+.recommendation-card .recommendation-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.message {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  text-align: center;
+  font-weight: 500;
+  animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.message.success {
+  background: var(--success-bg);
+  color: var(--success);
+  border: 1px solid var(--success);
+}
+
+.message.error {
+  background: var(--error-bg);
+  color: var(--error);
+  border: 1px solid var(--error);
+}
+
+.submissions-container {
+  background: var(--card-bg);
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  overflow-x: auto;
+}
+.submissions-page-wrapper {
+  background: var(--bg-primary);
+  min-height: calc(100vh - 80px);
+}
+
+.submissions-container h2 {
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+th, td {
+  padding: 0.875rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+th {
+  background: var(--bg-primary);
+  color: var(--text-secondary);
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+}
+
+tr:hover td {
+  background-color: rgba(58, 96, 224, 0.05);
+}
+
+@media (max-width: 768px) {
+  .page-container {
+    padding: 1rem;
+  }
+  .form-container, .submissions-container {
+    padding: 1.25rem;
+  }
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+  thead {
+    display: none;
+  }
+  tr {
+    margin-bottom: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 0.75rem;
+    background: var(--card-bg);
+  }
+  td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    border-bottom: none;
+    border-bottom: 1px dashed var(--border);
+  }
+  td:last-child {
+    border-bottom: none;
+  }
+  td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: var(--text-secondary);
+    width: 40%;
+    font-size: 0.75rem;
+  }
+}
+
+.spinner {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 0.6s linear infinite;
+  margin-right: 0.5rem;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
