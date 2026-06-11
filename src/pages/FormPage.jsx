@@ -15,6 +15,15 @@ export default function FormPage() {
 
     try {
       const recommendation = await getRecommendation(formData);
+
+      if (typeof window.gtag !== 'undefined') {
+        window.gtag('event', 'generate_recommendation', {
+          'event_category': 'engagement',
+          'event_label': recommendation,
+          'value': 1
+        });
+      }
+      
       await saveSubmission(formData, recommendation);
       setLastRecommendation(recommendation);
       setMessage({ text: 'Successfully saved!', type: 'success' });
